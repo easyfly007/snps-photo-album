@@ -1,0 +1,14 @@
+{% extends "photoapp/base.html" %}
+{% block title %}Synopsys Album{% endblock %}
+{% block content %}
+  {% for post in post_list %}
+  <article>
+    <div>{{ post.author }}</div>
+    <div>{{ post.timestamp }}</div>
+    <div>
+      {% for image in post.images %}
+      <img src={{image.url}} alt={{image.title}}/>
+    </div>
+  </article>
+  {% endfor %}
+{% endblock %}
