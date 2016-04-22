@@ -18,7 +18,7 @@ urlpatterns = [
 
     url(r'^user_(?P<userid>\w+)/new$',    'photoapp.views.user_new'),
     url(r'^user_(?P<userid>\w+)/edit$',   'photoapp.views.user_edit'),
-    url(r'^user_(?P<userid>\w+)/delete$', 'photoapp.views.user_delete'),
+    # url(r'^user_(?P<userid>\w+)/delete$', 'photoapp.views.user_delete'),
 
     # url(r'^user_(?P<userid>\w+)/post_(?P<postid>\d+)$', 'photoapp.views.post'),
     # url(r'^user_(?P<userid>\w+)/post_(?P<postid>\d+)/edit$', 'photoapp.views.post_edit'),

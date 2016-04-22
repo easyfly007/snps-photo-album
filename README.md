@@ -111,3 +111,33 @@ Synopsys Python SIG 兴趣小组项目
 
 
 
+
+# action item:
+
+## photo, photo_edit
+	* title, tag, 圈人（TODO），like, comment,
+	* Henry Qi <jingqi@synopsys.com>;
+	
+## post, post_edit
+	* delete photo， add new photo， post title， post tag， post like， post comment
+	* tag，like，comment，title， 对于post 和photo的重用，继承
+	* Mingchao Ji <mcji@synopsys.com>; 
+	
+## user/ user_edit
+	* delete a post, add new post，批量上传照片功能
+	* 考虑对于 add， delete 在post 和photo层级的重用，继承
+	* add photo 和add post，
+	* daniel Xu
+
+## user profile
+	* nickname，pic，info，
+	* Yifei Huang <yfhuang@synopsys.com>; 
+## model
+	* yaodong Hu
+## index
+	* Liang Zhu <liangzh@synopsys.com>; 
+## admin 
+	* Lin Chen <linchen@synopsys.com>
+	* yifei Huang
+
+
