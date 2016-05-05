@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.conf.urls import include, url
 from django.contrib import admin
 
@@ -34,8 +35,6 @@ urlpatterns = [
     # TODO 
     # tag
     # url(r'^post_(?P<postid>\d+)/photo_(?P<photoid>)\d+/edit$', 'photoapp.views.photo_edit'),    
-
     # event 比赛评选 vote
     # gallery 个人收藏
-
-]
+    ]
