@@ -117,11 +117,13 @@ Synopsys Python SIG 兴趣小组项目
 ## photo, photo_edit
 	* title, tag, 圈人（TODO），like, comment,
 	* Henry Qi <jingqi@synopsys.com>;
+	* table class: Photo, Tag, Comments, Like
 	
 ## post, post_edit
 	* delete photo， add new photo， post title， post tag， post like， post comment
 	* tag，like，comment，title， 对于post 和photo的重用，继承
 	* Mingchao Ji <mcji@synopsys.com>; 
+	* table class: Post
 	
 ## user/ user_edit
 	* delete a post, add new post，批量上传照片功能
