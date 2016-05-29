@@ -1,8 +1,12 @@
+<!DOCTYPE html>
 <html>
   <head>
+    <META http-equiv= "Content-Type" content = "text/html; charset=UTF-8">
     <title>网络相册 - {% block title %}{% endblock %}</title>
   </head>
   <body>
+
+    <!-- top nav bar -->
     <header>
         <div id="logo"></div>
         <ul>
@@ -12,7 +16,13 @@
         </ul>
     </header>
     <aside></aside>
+
+    {% block leftside %} {% endblock %}
+
     {% block content %}{% endblock %}
+    
+    {% block rightside %} {% endblock %}
+  
   </body>
   <footer></footer>
 </html>
