@@ -27,8 +27,10 @@ from django.contrib.auth.models import User
     # url(r'^user_(?P<userid>\w+)/post_(?P<postid>\d+)/photo_(?P<photoid>)\d+$/', 'photoapp.views.photo'),
     # url(r'^user_(?P<userid>\w+)/post_(?P<postid>\d+)/photo_(?P<photoid>)\d+/edit$/', 'photoapp.views.photo_edit'),
 
+ # main page, show all the post with by time line 
 def index(Request):
-	return HttpResponse("index page")
+    return render_to_response('photoapp/index.html', locals())
+	# return HttpResponse("index page")
 
 def login(Request):
 	return HttpResponse('login page')
