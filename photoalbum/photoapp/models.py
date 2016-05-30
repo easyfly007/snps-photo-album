@@ -20,23 +20,35 @@ class Tag(models.Model):
 
 class Post(models.Model):
 	author = models.ForeignKey(User)
-	time = models.TimeField()
+	time = models.DateTimeField()
 	title = models.CharField(max_length = 20)
 	tag = models.ManyToManyField(Tag)
 
+	class Meta:
+		ordering = ('-time',)
+
 # no need to add user information in the Photo table, as we can find it through post 
 class Photo(models.Model):
-	thumbnail = models.CharField(max_length = 60)
-	truesize  = models.CharField(max_length = 60)
-	post = models.ForeignKey(Post)
+	title = models.CharField(max_length = 20)
+	thumbnail = models.FileField # FileField only contains the root for the file 
+	truesize  = models.FileField # true size photo url
+	# thumbnail = models.CharField(max_length = 120) # url to store the thumbnail photo
+	# truesize  = models.CharField(max_length = 120) # url to store the true size photo 
+	post = models.ForeignKey(Post, related_name = 'photos')
 	tag = models.ManyToManyField(Tag)
+	iscoverpage = models.BooleanField
+
+	class Meta:
+		ordering = ('title',)
 
 class Comment(models.Model):
 	author = models.ForeignKey(User)
-	content = models.CharField(max_length = 140)
+	time = models.DateTimeField
+	content = models.TextField
+
 
 class PostComment(Comment):
-	post = models.ForeignKey(Post)
+	post = models.ForeignKey(Post, related_name = 'comments')
 
 class PhotoComment(Comment):
-	photo = models.ForeignKey(Photo)
+	photo = models.ForeignKey(Photo, related_name = 'comments')
