@@ -6,8 +6,8 @@ class User(models.Model):
 	nickname = models.CharField(max_length=32)
 	pic = models.ImageField(upload_to = 'profile_pics/',default='profile_pics/default.jpg')
 	info = models.TextField()
-	friends = models.ManyToManyField('self')
-	blacklists = models.ManyToManyField('self')
+	friends = models.ManyToManyField('self', blank=True)
+	blacklists = models.ManyToManyField('self', blank=True)
 	administrator = models.BooleanField()
 	locked = models.BooleanField()
 
