@@ -29,8 +29,8 @@ urlpatterns = [
 
     # url(r'^user/(?P<userid>\w+)/post/(?P<postid>\d+)/photo/(?P<photoid>)\d+$', 'photoapp.views.photo'),
     # url(r'^user/(?P<userid>\w+)/post/(?P<postid>\d+)/photo/(?P<photoid>)\d+/edit$', 'photoapp.views.photo_edit'),
-    url(r'^post/(?P<postid>\d+)/photo/(?P<photoid>)\d+$', 'photoapp.views.photo'),
-    url(r'^post/(?P<postid>\d+)/photo/(?P<photoid>)\d+/edit$', 'photoapp.views.photo_edit'),
+    url(r'^post/(?P<postid>\d+)/photo/(?P<photoid>\d+)$', 'photoapp.views.photo'),
+    url(r'^post/(?P<postid>\d+)/photo/(?P<photoid>\d+)/edit$', 'photoapp.views.photo_edit'),
 
     # TODO 
     # tag

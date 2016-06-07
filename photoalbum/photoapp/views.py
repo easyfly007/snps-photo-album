@@ -1,11 +1,10 @@
-from django.shortcuts import render, render_to_response
-import models
+from django.shortcuts import get_object_or_404, render, render_to_response
+from .models import *
 from django import forms
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import auth
 # from django.contrib import comments
-from django.contrib.auth.models import User
-
+from django.http import Http404
 
     # url(r'^admin/', include(admin.site.urls)),
     # url(r'^$/', 'photoapp.views.index'),
@@ -64,8 +63,10 @@ def post_edit(Request, userid, postid):
 	return HttpResponse('user post  edit page')
 
 
-def photo(Request, userid, postid, photoid):
-	return HttpResponse('user post photo page')
+def photo(Request, postid, photoid):
+    post = get_object_or_404(Post, pk=postid)
+    photo = get_object_or_404(Photo, pk=photoid)
+    return render_to_response('photoapp/photo.html', )
 
 def photo_edit(Request, userid, postid, photoid):
 	return HttpResponse('user post photo edit page')
