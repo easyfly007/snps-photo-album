@@ -29,6 +29,9 @@ class Post(models.Model):
 	title = models.CharField(max_length = 20)
 	tag = models.ManyToManyField(Tag, blank=True)
 
+	def __unicode__(self):
+	    return self.title
+
 	class Meta:
 		ordering = ('-time',)
 
@@ -42,6 +45,9 @@ class Photo(models.Model):
 	post = models.ForeignKey(Post, related_name = 'photos')
 	tag = models.ManyToManyField(Tag,blank=True)
 	iscoverpage = models.BooleanField
+
+	def __unicode__(self):
+	    return self.title
 
 	class Meta:
 		ordering = ('title',)
