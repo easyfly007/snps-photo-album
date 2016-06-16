@@ -57,9 +57,12 @@ def user_delete(Request, userid):
 
 
 
-def post(Request, userid, postid):
-	return HttpResponse('user post page')
-def post_edit(Request, userid, postid):
+def post(Request, postid):
+    cur_post = get_object_or_404(Post, pk=postid)
+    print cur_post
+    return render_to_response('photoapp/post_detail.html', {'post': cur_post})
+    
+def post_edit(Request, postid):
 	return HttpResponse('user post  edit page')
 
 
