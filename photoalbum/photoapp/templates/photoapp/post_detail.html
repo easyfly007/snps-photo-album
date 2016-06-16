@@ -1,14 +1,30 @@
 {% extends "photoapp/base.html" %}
-{% block title %}Synopsys Album{% endblock %}
+{% block title %}{{ post.title }}{% endblock %}
 {% block content %}
-  <div>
-    <div>{{ author }}</div>
-    <div> {{ timestamp }}</div>
-    <img src={{ current_img.url }} alt={{ current_img.title }} />
-    <div>
-      {% for img in other_imgs %}
-      <img src={{ img.url }} alt={{ img.title }}>
-      {% endfor %}
+<div class="activity_tab">
+  <div class="activity_tab_feed_region">
+    <div class="activity_feed infinite_scroll_container">
+      <div class="activity_group_item">
+        <div class="activity_group_item__user_region">
+          <div class="activity_group_item_header">
+            <a href="" class="activity_group_item__avatar">
+              <img src="" alt="">
+            </a>
+            <div class="activity_group_item__attribution">
+              <span class="activity_group_item__context">
+								<a href="" class="activity_group_item__creator">{{ post.author.username }}</a>
+              </span>
+              <span class="activity_group_item__timestamp">
+                {{ post.time }}
+							</span>
+            </div>
+          </div>
+        </div>
+        {% for photo in post.photos.all %}
+          <img src=/static/{{ photo.thumbnail }} alt="">
+        {% endfor %}
+      </div>
     </div>
   </div>
+</div>
 {% endblock %}
