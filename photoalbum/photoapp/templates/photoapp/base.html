@@ -1,28 +1,61 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <META http-equiv= "Content-Type" content = "text/html; charset=UTF-8">
-    <title>网络相册 - {% block title %}{% endblock %}</title>
-  </head>
-  <body>
 
-    <!-- top nav bar -->
-    <header>
-        <div id="logo"></div>
-        <ul>
-            <li>首页</li>
-            <li>设置</li>
-            <li>退出</li>
-        </ul>
-    </header>
-    <aside></aside>
+<head>
+    <META http-equiv= "Content-Type" content = "text/html; charset=UTF-8">  
+    <title>Synopsys Photo Album - {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" media="screen" href="/static/style/style.css">
+</head>
+
+<body>
+    <div class="main-nav">
+        <div class="left">
+            <a href="" class="logo"></a>
+            <ul>
+                <li class="top"><a href="" class="clearfix"><strong>Home</strong></a></li>
+                <li class="top"><a href="" class="clearfix"><strong>Discover</strong></a></li>
+                <li class="top"><a href="" class="clearfix"><strong>Photo Quests</strong></a></li>
+                <li class="top"><a href="" class="clearfix"><strong>Buy</strong></a></li>
+            </ul>
+        </div>
+        <div class="search">
+            <form action="https://500px.com/search" method="get">
+                <input class="query" name="q" placeholder="Search" type="text">
+                <input class="icon submit" name="submit" type="submit">
+                <input name="type" type="hidden" value="photos">
+            </form>
+        </div>
+        <div class="right">
+            <ul class="clearfix">
+                <li class="more">
+                    <a class="clearfix" data-submenu="popup_more" href="https://500px.com/#" id="nav_more">
+                        <span class="icon more"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="profile">
+            <ul>
+                <li class="top">
+                    <a class="clearfix profile" href="https://500px.com/#" id="nav_profile">
+                    </a>
+                </li>
+                <li class="top hide_on_small">
+                    <a class="callout clearfix upload" data-ga-action="Upload" data-ga-category="Site Navigation Header" data-new-uploader-enabled=""
+                        href="https://500px.com/manage/upload">
+                        <span class="icon upload"></span>
+                        <strong>Upload</strong>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
 
     {% block leftside %} {% endblock %}
 
     {% block content %}{% endblock %}
     
     {% block rightside %} {% endblock %}
-  
-  </body>
-  <footer></footer>
+
+</body>
+
 </html>
