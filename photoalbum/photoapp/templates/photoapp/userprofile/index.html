@@ -1,0 +1,123 @@
+{% extends "photoapp/base.html" %}
+{% block title %}User Profile {% endblock %}
+
+{% block headcss %}
+    <link rel="stylesheet" type="text/css" href="/static/style/userprofile/index.css">
+{% endblock %}
+{% block content %}
+    <div class = 'profile_header'>
+        <div class = 'cover_photo'>
+            <div class = 'cover_warp'>
+                <div class = 'image'></div>
+            </div>
+        </div>
+
+        <div class = 'profile_image'>
+            <div class = 'avatar_wrapper'>
+                <img  class = 'avatar' src="" title = '{{username}}' alt = 'yfhuang' >
+            </div>
+            <div class = 'badge_wrapper'>
+                <div class ='awson_badge pill'> Awesome</div>
+            </div>
+        </div>
+
+        <div class = 'profile_buttons'>
+            <div class = 'wrapper'>
+            </div>
+        </div>
+
+        <div class = 'user_details'>
+            <h1>{{user.username}}yfhuang</h1>
+            <ul class ='details'>
+                <li class = 'affection'>
+                    <div>
+                        <span>0 </span> affection
+                    </div>
+                </li>
+                <li class = 'view'>
+                    <div><span>12</span> photo views</div>
+                </li>
+                <li class = 'followers'>
+                    <div><span>13</span>followers</div>
+                </li>
+                <li class = 'following'>
+                    <div><span>33</span>following</div>
+                </li>
+            </ul>
+        </div>
+        <div class = 'user_links'>
+            <a class = 'stats' href=""></a>
+        </div>
+    </div>
+
+    <div class = 'profile_nav_wrapper'>
+        <div class = 'tabs_wrapper fix_width_on_modal'>
+            <div class = 'sticky_ui'>
+                <div></div>
+            </div>
+            <div class = 'px_tabs_fade'></div>
+            <ul class = 'profile_nav px_tabs'>
+                <li class = 'photos'>
+                    <a data-nav = 'photos' href="">photos</a>
+                </li>
+                <li class = 'galleries'>
+                    <a data-nav = 'galleries' href=""><span class="translation_missing" title="translation missing: en.profiles.show.nav.galleries">Galleries</span></a>
+                </li>
+                <li class="groups">
+                    <a data-nav="groups" href="/easyflyhuang/groups"> Groups </a>
+                </li>
+                <li class="about active">
+                    <a data-nav="about" href="/easyflyhuang/about">About</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+
+    <div class="profile_body">
+        <div class="about_body">
+            <div class="small_wrapper">
+                <section class="stats">
+                    <h3>Stats</h3>
+                    <div class="stat_block">
+                        <h3 class="light">Affection</h3>
+                        <span class="number">0</span>
+                    </div>
+                    <div class="stat_block">
+                        <h3 class="light">Views</h3>
+                        <span class="number">0</span>
+                    </div>
+                    <div class="stat_block">
+                        <h3 class="light">Favorites</h3>
+                        <span class="number">0</span>
+                    </div>
+                    <div class="stat_block">
+                        <h3 class="light">Likes</h3>
+                        <span class="number">0</span>
+                    </div>
+                    <div class="stat_block">
+                        <h3 class="light"><span class="translation_missing" title="translation missing: en.common.comments">Comments</span></h3>
+                        <span class="number">0</span>
+                    </div>
+                </section>
+                <section class="member_for">
+                    <p>A member since May 20, 2016</p>
+                </section>
+            </div>
+            <section class="map show">
+                <div id="user_map"></div>
+            </section>
+        </div>
+    </div>
+
+    <!-- <div class="call-to-action" data-i18n-android-ratings="Average of over 30,000 ratings" data-i18n-button="Get the free 500px app" data-i18n-heading="There's more to discover" data-i18n-load-more="Load more" data-i18n-ratings="Average of over 10,000 ratings" data-i18n-subheading="Like what you see? Discover more amazing photos in the 500px app.">
+    </div> -->
+
+    <div class="scroll_to_top_container">
+        <div class="px_scroll_to_top">
+            <a class="px_scroll_to_top__button"></a>
+            <span class="px_scroll_to_top__tooltip">Scroll to top</span>
+        </div>
+    </div>
+
+{% endblock %}

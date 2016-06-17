@@ -42,7 +42,8 @@ def user(Request, userid):
 	return HttpResponse('user page with userid='+userid)
 
 def profile(Request, userid):
-	return HttpResponse('user profile page')
+    return render_to_response('photoapp/userprofile/index.html', locals())
+	# return HttpResponse('user profile page')
 
 def profile_edit(Request, userid):
 	return HttpResponse('user profile edit page')
