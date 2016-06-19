@@ -68,9 +68,9 @@ def post_edit(Request, postid):
 
 
 def photo(Request, postid, photoid):
-    post = get_object_or_404(Post, pk=postid)
-    photo = get_object_or_404(Photo, pk=photoid)
-    return render_to_response('photoapp/photo.html', )
+    cur_post = get_object_or_404(Post, pk=postid)
+    cur_photo = get_object_or_404(Photo, pk=photoid)
+    return render_to_response('photoapp/photo.html', {'post': cur_post, 'photo': cur_photo})
 
 def photo_edit(Request, userid, postid, photoid):
 	return HttpResponse('user post photo edit page')

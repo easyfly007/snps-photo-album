@@ -49,8 +49,11 @@ class Photo(models.Model):
 	def __unicode__(self):
 	    return self.title
 
+	def tags(self):
+	    return self.tag.all()
+
 	class Meta:
-		ordering = ('title',)
+	    ordering = ('title',)
 
 class Comment(models.Model):
 	author = models.ForeignKey(User)
