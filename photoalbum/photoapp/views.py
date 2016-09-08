@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, render, render_to_response
+from django.shortcuts import get_object_or_404, render, render_to_response, get_list_or_404
 from .models import *
 from django import forms
 from django.http import HttpResponse, HttpResponseRedirect
@@ -22,13 +22,15 @@ from django.http import Http404
 
     # url(r'^user_(?P<userid>\w+)/post_(?P<postid>\d+)$/', 'photoapp.views.post'),
     # url(r'^user_(?P<userid>\w+)/post_(?P<postid>\d+)/edit$/', 'photoapp.views.post_edit'),
-    
+
     # url(r'^user_(?P<userid>\w+)/post_(?P<postid>\d+)/photo_(?P<photoid>)\d+$/', 'photoapp.views.photo'),
     # url(r'^user_(?P<userid>\w+)/post_(?P<postid>\d+)/photo_(?P<photoid>)\d+/edit$/', 'photoapp.views.photo_edit'),
 
- # main page, show all the post with by time line 
+ # main page, show all the post with by time line
 def index(Request):
-    return render_to_response('photoapp/index.html', locals())
+    cur_post = get_list_or_404(Post)
+    print cur_post
+    return render_to_response('photoapp/index.html', {'post_list': cur_post})
 	# return HttpResponse("index page")
 
 def login(Request):
@@ -62,7 +64,7 @@ def post(Request, postid):
     cur_post = get_object_or_404(Post, pk=postid)
     print cur_post
     return render_to_response('photoapp/post_detail.html', {'post': cur_post})
-    
+
 def post_edit(Request, postid):
 	return HttpResponse('user post  edit page')
 

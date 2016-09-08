@@ -3,13 +3,15 @@
 {% block content %}
   {% for post in post_list %}
   <article>
-    <div>{{ post.author }}</div>
-    <div>{{ post.timestamp }}</div>
+    <div>{{ post.author.username }}</div>
+    <div>{{ post.time }}</div>
     <div>
-      {% for image in post.images %}
-      <img src={{image.url}} alt={{image.title}}/>
+      {% for photo in post.photos.all %}
+      <img src=/static/{{ photo.thumbnail }} alt={{image.title}}/>
       {% endfor %}
     </div>
   </article>
   {% endfor %}
 {% endblock %}
+
+
