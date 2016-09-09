@@ -7,7 +7,7 @@
     <div>{{ post.time }}</div>
     <div>
       {% for photo in post.photos.all %}
-      <img src=/static/{{ photo.thumbnail }} alt={{image.title}}/>
+      <img src=/static/{{ photo.thumbnail }} class="img-thumbnail" width="304" height="236" alt={{image.title}}/>
       {% endfor %}
     </div>
   </article>
