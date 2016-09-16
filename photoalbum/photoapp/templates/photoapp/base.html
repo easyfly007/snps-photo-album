@@ -1,65 +1,38 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">  
-    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <META http-equiv= "Content-Type" content = "text/html; charset=UTF-8">  
-    <title> {% block title %}Home Page{% endblock %} - Synopsys Photo Album</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 500 px css file -->
     <link rel="stylesheet" media="screen" href="/static/style/style.css">
+
+    <!-- using the new template -->
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/ekko-lightbox.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/ekko-lightbox-dark.css">
+    <link rel="stylesheet" type="text/css" href="/static/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css"> 
+    
+    <script src="/static/js/jQuery/jquery-3.1.0.min.js"></script>
+
+    <title> {% block title %}Home Page{% endblock %} - Synopsys Photo Album</title>
+
      {% block headcss %} {% endblock %}
      {% block headjs %} {% endblock %}
 </head>
 
 <body>
-    <div class="main-nav">
-        <div class="left">
-            <a href="" class="logo"></a>
-            <ul>
-                <li class="top"><a href="" class="clearfix"><strong>Home</strong></a></li>
-                <li class="top"><a href="" class="clearfix"><strong>Discover</strong></a></li>
-                <li class="top"><a href="" class="clearfix"><strong>Photo Quests</strong></a></li>
-                <li class="top"><a href="" class="clearfix"><strong>Buy</strong></a></li>
-            </ul>
-        </div>
-        <div class="search">
-            <form action="https://500px.com/search" method="get">
-                <input class="query" name="q" placeholder="Search" type="text">
-                <input class="icon submit" name="submit" type="submit">
-                <input name="type" type="hidden" value="photos">
-            </form>
-        </div>
-        <div class="right">
-            <ul class="clearfix">
-                <li class="more">
-                    <a class="clearfix" data-submenu="popup_more" href="https://500px.com/#" id="nav_more">
-                        <span class="icon more"></span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="profile">
-            <ul>
-                <li class="top">
-                    <a class="clearfix profile" href="https://500px.com/#" id="nav_profile">
-                    </a>
-                </li>
-                <li class="top hide_on_small">
-                    <a class="callout clearfix upload" data-ga-action="Upload" data-ga-category="Site Navigation Header" data-new-uploader-enabled=""
-                        href="https://500px.com/manage/upload">
-                        <span class="icon upload"></span>
-                        <strong>Upload</strong>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
+    {% include "photoapp/nav.html" %}
 
     {% block leftside %} {% endblock %}
 
     {% block content %}{% endblock %}
     
     {% block rightside %} {% endblock %}
+
+    {% include "photoapp/footer.html" %}
 
 </body>
 
