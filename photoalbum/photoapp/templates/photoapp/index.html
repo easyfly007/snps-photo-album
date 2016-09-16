@@ -1,17 +1,23 @@
 {% extends "photoapp/base.html" %}
-{% block title %}Synopsys Album{% endblock %}
+{% block title %} Synopsys Album {% endblock %}
+
 {% block content %}
+<section id = 'gallery'>
   {% for post in post_list %}
-  <article>
-    <div>{{ post.author.username }}</div>
-    <div>{{ post.time }}</div>
-    <div>
+    <div class ='container-fluid'>
+      {{ post.author.username }}&nbsp;&nbsp;{{ post.time }}
+    </div>
+    <div class = 'container-fluid'>
       {% for photo in post.photos.all %}
-      <img src=/static/{{ photo.thumbnail }} class="img-thumbnail" width="304" height="236" alt={{image.title}}/>
+        <a href="#" data-toggle="lightbox" data-gallery="sigma-gallery" data-title="Image Title 01">
+          <img src=/static/{{ photo.thumbnail }} class="img-fluid sigmapad col-lg-4 col-md-6"  alt={{image.title}} /> 
+        </a>
       {% endfor %}
     </div>
-  </article>
   {% endfor %}
+</section>
+
 {% endblock %}
+
 
 
