@@ -37,4 +37,6 @@ urlpatterns = [
     # url(r'^post/(?P<postid>\d+)/photo/(?P<photoid>)\d+/edit$', 'photoapp.views.photo_edit'),    
     # event 比赛评选 vote
     # gallery 个人收藏
+    
+    url(r'^upload$', 'photoapp.views.upload'),
     ]

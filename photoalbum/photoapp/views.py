@@ -76,3 +76,6 @@ def photo(Request, postid, photoid):
 
 def photo_edit(Request, userid, postid, photoid):
 	return HttpResponse('user post photo edit page')
+
+def upload(Request):
+    return HttpResponse('upload page')
