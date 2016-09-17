@@ -47,5 +47,8 @@ urlpatterns = [
     url(r'^profile/(?P<username>\w+)$', 'photoapp.views.profile'),
 
     url(r'^login$', 'photoapp.views.login'),
+    url(r'^logout$', 'photoapp.views.logout'),
     url(r'^register$', 'photoapp.views.register'),
+    url(r'^logging$', 'photoapp.views.logging'),
+    
     ]
