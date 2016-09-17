@@ -1,2 +1,3 @@
 *.pyc
 *.sqlite3
+photoalbum/*.sqlite3
