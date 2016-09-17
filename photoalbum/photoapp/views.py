@@ -5,6 +5,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import auth
 # from django.contrib import comments
 from django.http import Http404
+from django.template import RequestContext
 
     # url(r'^admin/', include(admin.site.urls)),
     # url(r'^$/', 'photoapp.views.index'),
@@ -77,5 +78,14 @@ def photo(Request, postid, photoid):
 def photo_edit(Request, userid, postid, photoid):
 	return HttpResponse('user post photo edit page')
 
+# show page for user upload photos
 def upload(Request):
-    return HttpResponse('upload page')
+    # valid_user_id = Request.session.get('valid_user', False)
+    # myinfo = get_object_or_404(User, pk=valid_user_id)
+    return render_to_response(
+        'photoapp/upload.html',
+        RequestContext(Request,locals()))
+
+def uploading(Request):
+    # TODO: processing uploaded photos
+    return render(Request,'photoapp/index.html',locals())

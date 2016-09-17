@@ -1,0 +1,22 @@
+{% extends "photoapp/base.html" %}
+{% block title %} Upload Photos {% endblock %}
+
+{% block headjs %}
+	<script src="/static/js/upload.js"></script>
+{% endblock %}
+
+{% block content %}
+
+<form action = 'uploading' method = 'post'>{% csrf_token %}
+	<input name="uploadimg" type="text" id="imgfile" size="40" multiple="" />
+	<input type = 'submit' value = 'upload'>
+	<br />
+</form>
+<img name="showimg" id="showimg" src=""  alt="preview" />
+<div></div>
+<br />       
+
+{% endblock %}
+
+
+

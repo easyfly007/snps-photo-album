@@ -39,4 +39,5 @@ urlpatterns = [
     # gallery 个人收藏
     
     url(r'^upload$', 'photoapp.views.upload'),
+    url(r'^uploading$', 'photoapp.views.uploading'),
     ]
