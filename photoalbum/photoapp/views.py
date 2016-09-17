@@ -78,10 +78,14 @@ def photo(Request, postid, photoid):
 def photo_edit(Request, userid, postid, photoid):
 	return HttpResponse('user post photo edit page')
 
+
+
 # show page for user upload photos
 def upload(Request):
-    # valid_user_id = Request.session.get('valid_user', False)
-    # myinfo = get_object_or_404(User, pk=valid_user_id)
+    valid_user = dict()
+    valid_user['username'] = 'yfhuang'
+    valid_user['userid'] = 12
+    Request.session['valid_user'] = valid_user
     return render_to_response(
         'photoapp/upload.html',
         RequestContext(Request,locals()))
@@ -89,3 +93,23 @@ def upload(Request):
 def uploading(Request):
     # TODO: processing uploaded photos
     return render(Request,'photoapp/index.html',locals())
+
+def gallery(Request, username):
+    return render_to_response(
+        'photoapp/index.html',
+        RequestContext(Request,locals()))
+
+def profile(Request, username):
+    return render_to_response(
+        'photoapp/index.html',
+        RequestContext(Request,locals()))
+
+def login(Request):
+    return render_to_response(
+        'photoapp/index.html',
+        RequestContext(Request,locals()))
+
+def register(Request):
+    return render_to_response(
+        'photoapp/index.html',
+        RequestContext(Request,locals()))    

@@ -40,4 +40,12 @@ urlpatterns = [
     
     url(r'^upload$', 'photoapp.views.upload'),
     url(r'^uploading$', 'photoapp.views.uploading'),
+
+    # see all the photos for one user
+    url(r'^gallery/(?P<username>\w+)$', 'photoapp.views.gallery'),
+    # see the profile of one user
+    url(r'^profile/(?P<username>\w+)$', 'photoapp.views.profile'),
+
+    url(r'^login$', 'photoapp.views.login'),
+    url(r'^register$', 'photoapp.views.register'),
     ]
