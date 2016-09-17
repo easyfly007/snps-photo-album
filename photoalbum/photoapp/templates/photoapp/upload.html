@@ -1,21 +1,22 @@
 {% extends "photoapp/base.html" %}
 {% block title %} Upload Photos {% endblock %}
 
-{% block headjs %}
-	<script src="/static/js/upload.js"></script>
+{% block headcss %}
+	<link rel="stylesheet" href="/static/zyupload/control/css/zyUpload.css" type="text/css">
 {% endblock %}
 
+{% block headjs %}
+	<!-- 引用核心层插件 -->
+	<script src="/static/zyupload/core/zyFile.js"></script>
+	<!-- 引用控制层插件 -->
+	<script src="/static/zyupload/control/js/zyUpload.js"></script>
+	<!-- 引用初始化JS -->
+	<script src="/static/zyupload/core/lanrenzhijia.js"></script>
+{% endblock %}
+
+
 {% block content %}
-
-<form action = 'uploading' method = 'post'>{% csrf_token %}
-	<input name="uploadimg" type="text" id="imgfile" size="40" multiple="" />
-	<input type = 'submit' value = 'upload'>
-	<br />
-</form>
-<img name="showimg" id="showimg" src=""  alt="preview" />
-<div></div>
-<br />       
-
+<div id="demo" class="demo"></div>
 {% endblock %}
 
 
