@@ -122,4 +122,5 @@ def logging(Request):
 def register(Request):
     return render_to_response(
         'photoapp/index.html',
-        RequestContext(Request,locals()))    
+        RequestContext(Request,locals()))
+
