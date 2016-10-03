@@ -10,7 +10,8 @@
     <div class = 'container-fluid'>
       {% for photo in post.photos.all %}
         <a href="#" data-toggle="lightbox" data-gallery="sigma-gallery" data-title="Image Title 01">
-          <img src=/static/{{ photo.thumbnail }} class="img-fluid sigmapad col-lg-4 col-md-6"  alt={{image.title}} /> 
+          <img src="{{ photo.truesize.url }}" class = 'img-fluid sigmapad col-lg-4 col-md-6' >
+          <!-- <img src=/static/{{ photo.thumbnail }} class="img-fluid sigmapad col-lg-4 col-md-6"  alt={{image.title}} />  -->
         </a>
       {% endfor %}
     </div>

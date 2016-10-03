@@ -1,6 +1,8 @@
 # encoding: utf-8
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.conf.urls.static import static
+import settings
 
 urlpatterns = [
     # Examples:
@@ -51,4 +53,7 @@ urlpatterns = [
     url(r'^register$', 'photoapp.views.register'),
     url(r'^logging$', 'photoapp.views.logging'),
     
-    ]
+    # ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) 
+    ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
+
+    
