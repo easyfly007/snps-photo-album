@@ -87,11 +87,11 @@
 					html += '	<div class="upload_box">';
 					html += '		<div class="upload_main single_main">';
 		            html += '			<div class="status_bar">';
-		            html += '				<div id="status_info" class="info">选中0张文件，共0B。</div>';
+		            html += '				<div id="status_info" class="info">0 file, 0B</div>';
 		            html += '				<div class="btns">';
 		            html += '					<input id="fileImage" type="file" size="30" name="fileselect[]" '+multiple+'>';
-		            html += '					<div class="webuploader_pick">选择文件</div>';
-		            html += '					<div class="upload_btn">开始上传</div>';
+		            html += '					<div class="webuploader_pick">select photo files</div>';
+		            html += '					<div class="upload_btn">upload</div>';
 		            html += '				</div>';
 		            html += '			</div>';
 		            html += '			<div id="preview" class="upload_preview">';
@@ -139,7 +139,7 @@
 				}  
 				
 				// 设置内容
-				$("#status_info").html("选中"+num+"张文件，共"+size+"。");
+				$("#status_info").html(+num+" photo files, "+size+"");
 			};
 			
 			/**
@@ -151,7 +151,7 @@
 				var arrFiles = [];  // 替换的文件数组
 				for (var i = 0, file; file = files[i]; i++) {
 					if (file.size >= 51200000) {
-						alert('您这个"'+ file.name +'"文件大小过大');	
+						alert('"'+ file.name +'" file size too large');	
 					} else {
 						// 在这里需要判断当前所有文件中
 						arrFiles.push(file);	
@@ -172,7 +172,7 @@
 				// 处理配置参数删除按钮
 				var delHtml = "";
 				if(para.del){  // 显示删除按钮
-					delHtml = '<span class="file_del" data-index="'+file.index+'" title="删除"></span>';
+					delHtml = '<span class="file_del" data-index="'+file.index+'" title="delete"></span>';
 				}
 				
 				// 处理不同类型文件代表的图标
@@ -203,7 +203,7 @@
 					html += '		</div>';
 					html += '	</a>';
 					html += '	<p id="uploadProgress_'+file.index+'" class="file_progress"></p>';
-					html += '	<p id="uploadFailure_'+file.index+'" class="file_failure">上传失败，请重试</p>';
+					html += '	<p id="uploadFailure_'+file.index+'" class="file_failure">upload failed, pls re-try</p>';
 					html += '	<p id="uploadSuccess_'+file.index+'" class="file_success"></p>';
 					html += '</div>';
                 	
@@ -221,7 +221,7 @@
 					html += '		</div>';
 					html += '	</a>';
 					html += '	<p id="uploadProgress_'+file.index+'" class="file_progress"></p>';
-					html += '	<p id="uploadFailure_'+file.index+'" class="file_failure">上传失败，请重试</p>';
+					html += '	<p id="uploadFailure_'+file.index+'" class="file_failure">upload failed, pls re-try</p>';
 					html += '	<p id="uploadSuccess_'+file.index+'" class="file_success"></p>';
 					html += '</div>';
 				}
@@ -345,7 +345,7 @@
 					onFailure: function(file) {
 						$("#uploadProgress_" + file.index).hide();
 						$("#uploadSuccess_" + file.index).show();
-						$("#uploadInf").append("<p>文件" + file.name + "上传失败！</p>");	
+						$("#uploadInf").append("<p>file " + file.name + " upload failed! </p>");	
 						//$("#uploadImage_" + file.index).css("opacity", 0.2);
 					},
 					onComplete: function(response){
