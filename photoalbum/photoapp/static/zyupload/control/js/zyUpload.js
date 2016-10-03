@@ -58,23 +58,23 @@
 					html += '			<div class="upload_choose">';
 	            	html += '				<div class="convent_choice">';
 	            	html += '					<div class="andArea">';
-	            	html += '						<div class="filePicker">点击选择文件</div>';
+	            	html += '						<div class="filePicker">select photos </div>';
 	            	html += '						<input id="fileImage" type="file" size="30" name="fileselect[]" '+multiple+'>';
 	            	html += '					</div>';
 	            	html += '				</div>';
-					html += '				<span id="fileDragArea" class="upload_drag_area">或者将文件拖到此处</span>';
+					html += '				<span id="fileDragArea" class="upload_drag_area">or drag your photo files here</span>';
 					html += '			</div>';
 		            html += '			<div class="status_bar">';
-		            html += '				<div id="status_info" class="info">选中0张文件，共0B。</div>';
+		            html += '				<div id="status_info" class="info">0 photo, 0B</div>';
 		            html += '				<div class="btns">';
-		            html += '					<div class="webuploader_pick">继续选择</div>';
-		            html += '					<div class="upload_btn">开始上传</div>';
+		            html += '					<div class="webuploader_pick">continue</div>';
+		            html += '					<div class="upload_btn">upload</div>';
 		            html += '				</div>';
 		            html += '			</div>';
 					html += '			<div id="preview" class="upload_preview"></div>';
 					html += '		</div>';
 					html += '		<div class="upload_submit">';
-					html += '			<button type="button" id="fileSubmit" class="upload_submit_btn">确认上传文件</button>';
+					html += '			<button type="button" id="fileSubmit" class="upload_submit_btn">confirm</button>';
 					html += '		</div>';
 					html += '		<div id="uploadInf" class="upload_inf"></div>';
 					html += '	</div>';
@@ -333,7 +333,7 @@
 					onSuccess: function(file, response) {
 						$("#uploadProgress_" + file.index).hide();
 						$("#uploadSuccess_" + file.index).show();
-						$("#uploadInf").append("<p>上传成功，文件地址是：" + response + "</p>");
+						$("#uploadInf").append("<p>success，photo uploaded to：" + response + "</p>");
 						// 根据配置参数确定隐不隐藏上传成功的文件
 						if(para.finishDel){
 							// 移除效果

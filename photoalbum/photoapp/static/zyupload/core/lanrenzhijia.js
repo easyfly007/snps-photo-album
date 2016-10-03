@@ -1,7 +1,7 @@
  /* 代码整理：懒人之家 www.lanrenzhijia.com */
 $(function(){
 	// 初始化插件
-	$("#demo").zyUpload({
+	$("#zyupload").zyUpload({
 		width            :   "650px",                 // 宽度
 		height           :   "400px",                 // 宽度
 		itemWidth        :   "120px",                 // 文件项的宽度
