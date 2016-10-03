@@ -3,6 +3,27 @@
  * by zhangyan 2014-06-21   QQ : 623585268
 */
  /* 代码整理：懒人之家 www.lanrenzhijia.com */
+
+// using jQuery
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = getCookie('csrftoken');
+
+
+
 var ZYFILE = {
 		fileInput : null,             // 选择文件按钮dom对象
 		uploadInput : null,           // 上传文件按钮dom对象
@@ -143,7 +164,7 @@ var ZYFILE = {
 		},
 		// 上传单个个文件
 		funUploadFile : function(file){
-			var self = this;  // 在each中this指向没个v  所以先将this保留
+			var self = this;  // 在each中this指向每个v  所以先将this保留
 			
 			var formdata = new FormData();
 			formdata.append("fileList", file);	         		
@@ -162,7 +183,7 @@ var ZYFILE = {
 		    	self.onSuccess(file, xhr.responseText);
 		    	if(self.uploadFile.length==0){
 		    		// 回调全部完成方法
-		    		self.onComplete("全部完成");
+		    		self.onComplete("all completed!");
 		    	}
 		    }, false);  
 		    // 错误
@@ -172,8 +193,11 @@ var ZYFILE = {
 		    }, false);  
 			
 			xhr.open("POST",self.url, true);
+			xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
 			xhr.setRequestHeader("X_FILENAME", file.name);
+			
 			xhr.send(formdata);
+
 		},
 		// 返回需要上传的文件
 		funReturnNeedFiles : function(){

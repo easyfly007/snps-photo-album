@@ -58,7 +58,7 @@
 					html += '			<div class="upload_choose">';
 	            	html += '				<div class="convent_choice">';
 	            	html += '					<div class="andArea">';
-	            	html += '						<div class="filePicker">select photos </div>';
+	            	html += '						<div class="filePicker">browse ... </div>';
 	            	html += '						<input id="fileImage" type="file" size="30" name="fileselect[]" '+multiple+'>';
 	            	html += '					</div>';
 	            	html += '				</div>';
@@ -345,7 +345,7 @@
 					onFailure: function(file) {
 						$("#uploadProgress_" + file.index).hide();
 						$("#uploadSuccess_" + file.index).show();
-						$("#uploadInf").append("<p>file " + file.name + " upload failed! </p>");	
+						$("#uploadInf").append("<p>file " + file.name + " upload failed! 	</p>");	
 						//$("#uploadImage_" + file.index).css("opacity", 0.2);
 					},
 					onComplete: function(response){
@@ -389,7 +389,7 @@
 					if(ZYFILE.funReturnNeedFiles().length > 0){
 						$("#fileSubmit").click();
 					}else{
-						alert("请先选中文件再点击上传");
+						alert("pls select files first!");
 					}
 	            });
 				

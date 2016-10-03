@@ -81,7 +81,8 @@ def upload(Request):
 @decorate
 def uploading(Request):
     # TODO: processing uploaded photos
-    return render(Request,'photoapp/index.html',locals())
+    return HttpResponse('ok')
+    # render(Request,'photoapp/index.html',locals())
 
 @decorate
 def gallery(Request, username):
