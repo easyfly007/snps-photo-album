@@ -7,6 +7,10 @@ from django.contrib import auth
 from django.http import Http404
 from django.template import RequestContext
 from .decorator import decorate
+import os
+from django.conf import settings
+from PIL import Image
+
 
     # url(r'^admin/', include(admin.site.urls)),
     # url(r'^$/', 'photoapp.views.index'),
@@ -78,11 +82,55 @@ def upload(Request):
         'photoapp/upload.html',
         RequestContext(Request,locals()))
 
+
 @decorate
 def uploading(Request):
-    # TODO: processing uploaded photos
-    return HttpResponse('ok')
-    # render(Request,'photoapp/index.html',locals())
+    if Request.method != 'POST':
+        return HttpResponseRedirect('/index')
+
+    f = Request.FILES.get('fileList', None)
+    if f is None:
+        return HttpResponse('no image file uploaded')
+    
+    post_id = Request.POST.get('post_id', None)
+    if post_id:
+        post = Post.objects.get(pk = post_id)
+    else:
+        pass # TODO: create new post here
+
+
+    # thumbnail = Image.open(f)
+    # thumbnail.thumbnail((800, 800))
+    # thumbnail.save('thumbnail.jpg', 'jpeg')
+
+    # thumbnail.thumbnail((128, 128), Image.ANTIALIAS)
+
+    # post = Post.objects.get(pk = post_id, None)
+    photo = Photo(
+        truesize = f, 
+        # thumbnail= thumbnail, 
+        post_id = post_id, 
+        title = 'my image')
+    photo.save()
+
+    # baseDir = settings.MEDIA_ROOT
+    # jpgdir = os.path.join(baseDir, 'upload_pics')
+    # with open('C:\\Users\\yfhuang\\Desktop\programming\\snps-photo-album\\photoalbum\\upload_pics\\001.jpg', 'wb+') as destination:
+    #         for chunk in uploadedfile.chunks():
+    #             destination.write(chunk)
+    
+
+    # print str(photo.truesize)
+    # basedir, imgefile = os.path.split(photo.truesize.path)
+    # thumbnailname = os.path.join(basedir, 'thumb', imgefile)
+    # thumbnail = Image.open(f)  
+    # thumbnail.thumbnail((128,128), Image.ANTIALIAS)
+    # thumbnail.save(thumbnailname)
+    # photo.thumbnail = thumbnail
+    # photo.save()
+
+    return HttpResponse(photo.truesize.url)
+
 
 @decorate
 def gallery(Request, username):
