@@ -166,7 +166,9 @@ var ZYFILE = {
 			var self = this;  // 在each中this指向每个v  所以先将this保留
 			
 			var formdata = new FormData();
-			formdata.append("fileList", file);	         		
+			formdata.append("fileList", file);
+			formdata.append('post_id', 1);
+			// 需要考虑上传不同的 image 给同一个 album 的 post         		
 			var xhr = new XMLHttpRequest();
 			// 绑定上传事件
 			// 进度
