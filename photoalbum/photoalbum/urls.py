@@ -50,7 +50,7 @@ urlpatterns = [
     # see the profile of one user
     url(r'^profile/(?P<username>\w+)$', app.profile),
 
-    url(r'^login$', app.login),
+    url(r'^login/', app.login_form),
     url(r'^logout$', app.logout),
     url(r'^register$', app.register),
     url(r'^logging$', app.logging),
