@@ -14,29 +14,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 
 
-
-    # url(r'^admin/', include(admin.site.urls)),
-    # url(r'^$/', 'photoapp.views.index'),
-    # url(r'^index$/', 'photoapp.views.index'),
-    # url(r'^login$/', 'photoapp.views.login'),
-    # url(r'^logout$/', 'photoapp.views.logout'),
-
-    # url(r'^user_(?P<userid>\w+)$/', 'photoapp.views.user'),
-    # url(r'^user_(?P<userid>\w+)/profile$/', 'photoapp.views.profile'),
-    # url(r'^user_(?P<userid>\w+)/profile/edit$/', 'photoapp.views.profile_edit'),
-
-    # url(r'^user_(?P<userid>\w+)/new$/',    'photoapp.views.user_new'),
-    # url(r'^user_(?P<userid>\w+)/edit$/',   'photoapp.views.user_edit'),
-    # url(r'^user_(?P<userid>\w+)/delete$/', 'photoapp.views.user_delete'),
-
-    # url(r'^user_(?P<userid>\w+)/post_(?P<postid>\d+)$/', 'photoapp.views.post'),
-    # url(r'^user_(?P<userid>\w+)/post_(?P<postid>\d+)/edit$/', 'photoapp.views.post_edit'),
-
-    # url(r'^user_(?P<userid>\w+)/post_(?P<postid>\d+)/photo_(?P<photoid>)\d+$/', 'photoapp.views.photo'),
-    # url(r'^user_(?P<userid>\w+)/post_(?P<postid>\d+)/photo_(?P<photoid>)\d+/edit$/', 'photoapp.views.photo_edit'),
-
- # main page, show all the post with by time line
-
 @login_required
 def index(Request):
     post_list = get_list_or_404(Post)
@@ -46,9 +23,6 @@ def index(Request):
         print('is_authenticated is False')
 
     return render_to_response('photoapp/index.html', locals())
-
-def user(Request, userid):
-	return HttpResponse('user page with userid='+userid)
 
 def profile(Request, userid):
     return render_to_response('photoapp/userprofile/index.html', locals())
