@@ -35,6 +35,11 @@ from PIL import Image
  # main page, show all the post with by time line
 def index(Request):
     post_list = get_list_or_404(Post)
+    if Request.user.is_authenticated():
+        print('is_authenticated is True')
+    else:
+        print('is_authenticated is False')
+
     return render_to_response('photoapp/index.html', locals())
 
 def user(Request, userid):
