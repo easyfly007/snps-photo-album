@@ -11,22 +11,16 @@ from django.conf import settings
 from PIL import Image
 
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 
 @login_required
 def index(Request):
     post_list = get_list_or_404(Post)
-    if Request.user.is_authenticated():
-        print('is_authenticated is True')
-    else:
-        print('is_authenticated is False')
-
     return render_to_response('photoapp/index.html', locals())
 
 def profile(Request, userid):
     return render_to_response('photoapp/userprofile/index.html', locals())
-	# return HttpResponse('user profile page')
 
 def profile_edit(Request, userid):
 	return HttpResponse('user profile edit page')
@@ -134,14 +128,11 @@ def login_form(Request):
         'photoapp/login.html',
         RequestContext(Request,locals()))
 
-def logout(Request):
-    valid_user = Request.session.get('valid_user', False)
-    if valid_user:
-        del Request.session['valid_user']
+def logout_form(Request):
+    logout(Request)
     return HttpResponseRedirect('/login')
 
 def logging(Request):
-    print('logging')
     if Request.method  == 'POST':
         username = Request.POST['username']
         password = Request.POST['password']
@@ -150,13 +141,15 @@ def logging(Request):
             # the password verified for the user
             if user.is_active:
                 login(Request, user)
-                print("User is valid, active and authenticated")
+                # print("User is valid, active and authenticated")
                 return HttpResponseRedirect('/index')
             else:
-                print("The password is valid, but the account has been disabled!")
+                pass
+                # print("The password is valid, but the account has been disabled!")
         else:
+            pass
             # the authentication system was unable to verify the username and password
-            print("The username and password were incorrect.")
+            # print("The username and password were incorrect.")
     return HttpResponseRedirect('/login')
 
 def register(Request):

@@ -42,7 +42,7 @@ urlpatterns = [
     url(r'^profile_edit/(?P<username>\w+)$', app.profile_edit),
 
     url(r'^login/', app.login_form),
-    url(r'^logout$', app.logout),
+    url(r'^logout$', app.logout_form),
     url(r'^register$', app.register),
     url(r'^logging$', app.logging),
     
