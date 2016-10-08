@@ -86,7 +86,7 @@ def uploading(Request):
     # post = Post.objects.get(pk = post_id, None)
     photo = Photo(
         truesize = f, 
-        # thumbnail= thumbnail, 
+        thumbnail= f,
         post_id = post_id, 
         title = 'my image')
     photo.save()
@@ -112,6 +112,8 @@ def uploading(Request):
 
 @login_required
 def gallery(Request, username):
+    user = User.objects.get(username = username)
+    post_list = user.post_set.all()
     return render_to_response(
         'photoapp/index.html',
         RequestContext(Request,locals()))
