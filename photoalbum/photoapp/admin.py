@@ -1,8 +1,8 @@
 from django.contrib import admin
-from photoapp.models import User, Post, Photo, Tag, Comment
+from photoapp.models import Post, Photo, Tag, Comment
 
-class UserAdmin(admin.ModelAdmin):
-	list_display = ('username', 'nickname', 'administrator', 'locked')
+# class UserAdmin(admin.ModelAdmin):
+# 	list_display = ('username', 'nickname', 'administrator', 'locked')
 	
 class PostAdmin(admin.ModelAdmin):
 	list_display = ('author', 'time', 'tag', 'title')
@@ -20,7 +20,7 @@ class CommentAdmin(admin.ModelAdmin):
 	list_display = ('time', 'content')
 
 
-admin.site.register(User, UserAdmin)
+# admin.site.register(User, UserAdmin)
 admin.site.register(Post, PhotoAdmin)
 admin.site.register(Photo, PhotoAdmin)
 admin.site.register(Tag, TagAdmin)
