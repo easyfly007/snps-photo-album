@@ -18,16 +18,16 @@
                       <a class="nav-link" href="/index">Home <!-- <span class="sr-only">(current)</span> --></a>
                     </li>
                     <li class="nav-item">
-                        {% if Request.session.valid_user %}
-                            <a class="nav-link" href="/gallery/{{ Request.session.valid_user.username}}"> Gallery</a>
+                        {% if Request.user.is_authenticated %}
+                            <a class="nav-link" href="/gallery/{{ Request.user.username }}"> Gallery</a>
                         {% else %}
                             <a class="nav-link" href="/index">Gallery</a>
                         {% endif %}
                     </li>
                     <li class="nav-item">
-                        {% if Request.session.valid_user %}
-                            <a class="nav-link" href="/profile/{{Request.session.valid_user.username}}">
-                                {{ Request.session.valid_user.username }}
+                        {% if Request.user.is_authenticated %}
+                            <a class="nav-link" href="/profile/{{Request.user.username}}">
+                                {{ Request.user.username}}
                             </a>
                         {% else %}
                             <a class="nav-link" href="/login"> Login </a>

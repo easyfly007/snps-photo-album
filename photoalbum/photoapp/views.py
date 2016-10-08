@@ -6,7 +6,6 @@ from django.contrib import auth
 # from django.contrib import comments
 from django.http import Http404
 from django.template import RequestContext
-from .decorator import decorate
 import os
 from django.conf import settings
 from PIL import Image
@@ -87,14 +86,14 @@ def photo_edit(Request, userid, postid, photoid):
 
 
 # show page for user upload photos
-@decorate
+@login_required
 def upload(Request):
     return render_to_response(
         'photoapp/upload.html',
         RequestContext(Request,locals()))
 
 
-@decorate
+@login_required
 def uploading(Request):
     if Request.method != 'POST':
         return HttpResponseRedirect('/index')
@@ -143,13 +142,13 @@ def uploading(Request):
     return HttpResponse(photo.truesize.url)
 
 
-@decorate
+@login_required
 def gallery(Request, username):
     return render_to_response(
         'photoapp/index.html',
         RequestContext(Request,locals()))
 
-@decorate
+@login_required
 def profile(Request, username):
     return render_to_response(
         'photoapp/index.html',
