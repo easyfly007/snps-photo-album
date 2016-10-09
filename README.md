@@ -22,5 +22,13 @@ photo
 
 dependence:
 1. sorl-thumbnail, for thumbnail generation
+
 ref: https://github.com/mariocesar/sorl-thumbnail
- 
+
+update the settings.py
+
+python manager.py makemigrations thumbnail && python manage.py migrate
+
+refine the template 
+
+
