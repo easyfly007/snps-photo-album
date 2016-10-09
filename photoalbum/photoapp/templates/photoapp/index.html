@@ -5,7 +5,9 @@
 <section id = 'gallery'>
   {% for post in post_list %}
     <div class ='container-fluid'>
-      {{ post.author.username }}&nbsp;&nbsp;{{ post.time }}
+      <a href="/gallery/{{post.author.username}}">{{ post.author.username }}</a>
+      &nbsp;|&nbsp;
+      {{ post.time }}
     </div>
     <div class = 'container-fluid'>
       {% for photo in post.photos.all %}
