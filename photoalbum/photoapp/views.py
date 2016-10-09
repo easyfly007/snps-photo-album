@@ -82,36 +82,11 @@ def uploading(Request):
         post.save()
         Request.session['last_postid'] = post.id
 
-    # thumbnail = Image.open(f)
-    # thumbnail.thumbnail((800, 800))
-    # thumbnail.save('thumbnail.jpg', 'jpeg')
-
-    # thumbnail.thumbnail((128, 128), Image.ANTIALIAS)
-
-    # post = Post.objects.get(pk = post_id, None)
     photo = Photo(
         truesize = f, 
-        thumbnail= f,
         post = post, 
         title = 'my image')
     photo.save()
-
-    # baseDir = settings.MEDIA_ROOT
-    # jpgdir = os.path.join(baseDir, 'upload_pics')
-    # with open('C:\\Users\\yfhuang\\Desktop\programming\\snps-photo-album\\photoalbum\\upload_pics\\001.jpg', 'wb+') as destination:
-    #         for chunk in uploadedfile.chunks():
-    #             destination.write(chunk)
-    
-
-    # print str(photo.truesize)
-    # basedir, imgefile = os.path.split(photo.truesize.path)
-    # thumbnailname = os.path.join(basedir, 'thumb', imgefile)
-    # thumbnail = Image.open(f)  
-    # thumbnail.thumbnail((128,128), Image.ANTIALIAS)
-    # thumbnail.save(thumbnailname)
-    # photo.thumbnail = thumbnail
-    # photo.save()
-    # return HttpResponse(post.id)
     return HttpResponse(photo.truesize.url)
 
 
