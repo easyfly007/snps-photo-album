@@ -13,6 +13,7 @@ from PIL import Image
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 
+from datetime import datetime
 
 @login_required
 def index(Request):
@@ -70,12 +71,16 @@ def uploading(Request):
     if f is None:
         return HttpResponse('no image file uploaded')
     
-    post_id = Request.POST.get('post_id', None)
-    if post_id:
-        post = Post.objects.get(pk = post_id)
-    else:
-        pass # TODO: create new post here
-
+    post = None
+    newpost = Request.POST.get('newpost', None)
+    if newpost and int(newpost) == 0:
+        last_postid = Request.session.get('last_postid', None)
+        if last_postid:
+            post = Post.objects.get(pk = last_postid)
+    if post is None:
+        post = Post(author = Request.user, title='', time=datetime.now() )
+        post.save()
+        Request.session['last_postid'] = post.id
 
     # thumbnail = Image.open(f)
     # thumbnail.thumbnail((800, 800))
@@ -87,7 +92,7 @@ def uploading(Request):
     photo = Photo(
         truesize = f, 
         thumbnail= f,
-        post_id = post_id, 
+        post = post, 
         title = 'my image')
     photo.save()
 
@@ -106,7 +111,7 @@ def uploading(Request):
     # thumbnail.save(thumbnailname)
     # photo.thumbnail = thumbnail
     # photo.save()
-
+    # return HttpResponse(post.id)
     return HttpResponse(photo.truesize.url)
 
 
