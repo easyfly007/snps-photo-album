@@ -1,4 +1,5 @@
 {% extends "photoapp/base.html" %}
+{% load thumbnail %}
 {% block title %} Synopsys Album {% endblock %}
 
 {% block content %}
@@ -13,10 +14,13 @@
       {{tag.title}}
       {% endfor %}
     </div>
+
     <div class = 'container-fluid'>
       {% for photo in post.photos.all %}
         <a href="{{photo.truesize.url}}" data-toggle="lightbox" data-gallery="sigma-gallery" data-title="{{photo.title}}">
-          <img src="{{ photo.thumbnail.url }}" class = 'img-fluid sigmapad col-lg-4 col-md-6' >
+        {% thumbnail photo.truesize "470" as im %}
+          <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" class = 'img-fluid sigmapad col-lg-4 col-md-6'>
+        {% endthumbnail %}
         </a>
       {% endfor %}
     </div>

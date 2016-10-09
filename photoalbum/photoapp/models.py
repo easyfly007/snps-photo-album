@@ -39,9 +39,11 @@ class Post(models.Model):
 # no need to add user information in the Photo table, as we can find it through post 
 class Photo(models.Model):
 	title = models.CharField(max_length = 20)
-	thumbnail = models.ImageField(upload_to = 'upload_pics/',default='upload_pics/default.jpg')
+	# thumbnail = models.ImageField(upload_to = 'upload_pics/',default='upload_pics/default.jpg')
 	# FileField only contains the root for the file 
 	truesize  = models.ImageField(upload_to = 'upload_pics/',default='upload_pics/default.jpg')
+	width = models.IntegerField(default = 0)
+	height = models.IntegerField(default = 0)
 	# true size photo url
 	post = models.ForeignKey(Post, related_name = 'photos')
 	tag = models.ManyToManyField(Tag, related_name = 'posttags', blank=True)
