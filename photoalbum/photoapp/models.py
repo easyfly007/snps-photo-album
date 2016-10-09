@@ -28,7 +28,7 @@ class Post(models.Model):
 	author = models.ForeignKey(User)
 	time = models.DateTimeField()
 	title = models.CharField(max_length = 20)
-	tag = models.ManyToManyField(Tag, blank=True)
+	tag = models.ManyToManyField(Tag, related_name = 'phototags', blank=True)
 
 	def __unicode__(self):
 	    return self.title
@@ -44,7 +44,7 @@ class Photo(models.Model):
 	truesize  = models.ImageField(upload_to = 'upload_pics/',default='upload_pics/default.jpg')
 	# true size photo url
 	post = models.ForeignKey(Post, related_name = 'photos')
-	tag = models.ManyToManyField(Tag,blank=True)
+	tag = models.ManyToManyField(Tag, related_name = 'posttags', blank=True)
 	iscoverpage = models.BooleanField
 
 	def __unicode__(self):
