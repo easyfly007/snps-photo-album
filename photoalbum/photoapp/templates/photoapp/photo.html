@@ -1,64 +1,66 @@
 {% extends "photoapp/base.html" %}
+{% load thumbnail %}
+
 {% block title %}Synopsys Album - {{ post }} - {{ photo }} {% endblock %}
 {% block content %}
-                <!-- Blog Post -->
-                <h1> {{ photo }} </h1>
-                <!-- Title -->
-                <p class="lead">
-                by {{ photo.post.author }}
-                </p>
+    <div class ='container-fluid'>
+      <!-- Blog Post -->
+      <h1> {{ photo }} </h1>
+      <!-- Title -->
+      <p class="lead">
+      by {{ photo.post.author }}
+      </p>
 
-                <hr>
+      <hr>
 
-                <!-- Date/Time -->
-                <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
+      <!-- Date/Time -->
+      <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
 
-                <hr>
-
-                <!-- Preview Image -->
-                {% load staticfiles %}
-                <img src="{% static photo.truesize %}" alt="">
-
-                <hr>
-
-                <!--Tag -->
-                <ul>
-                {% for onetag in photo.tags %}
-                    <li>{{ onetag }}</li>
-                {% endfor %}
-                </ul>
-                <hr>
-
-                <!-- Blog Comments -->
-
-                <!-- Comments Form -->
-                <div class="well">
-                    <h4>Leave a Comment:</h4>
-                    <form role="form">
-                        <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
-            <div class="col-lg-8">
-
-                <hr>
-
-                <!-- Posted Comments -->
-
-                <!-- Comment -->
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="http://placehold.it/64x64" alt="">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">Start Bootstrap
-                            <small>August 25, 2014 at 9:30 PM</small>
-                        </h4>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                    </div>
-                </div>
-            </div>
-
+      <hr>
+    </div>
+    <div class ='container-fluid'>
+      <!-- Preview Image -->
+      {% thumbnail photo.truesize "470" as im %}
+      <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" class = 'img-fluid center-block'>
+      {% endthumbnail %}
+      <hr>
+    </div>
+    <div class='container-fluid'>
+      <!--Tag -->
+      <ul>
+      {% for onetag in photo.tags %}
+          <li>{{ onetag }}</li>
+      {% endfor %}
+      </ul>
+      <hr>
+    </div>
+    <div class="container-fluid">
+      <!-- Blog Comments -->
+      <!-- Comments Form -->
+      <div class="well">
+          <h4>Leave a Comment:</h4>
+          <form role="form">
+              <div class="form-group">
+                  <textarea class="form-control" rows="3"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+      </div>
+      <div class="col-lg-8">
+      <hr>
+      <!-- Posted Comments -->
+      <!-- Comment -->
+      <div class="media">
+          <a class="pull-left" href="#">
+              <img class="media-object" src="http://placehold.it/64x64" alt="">
+          </a>
+          <div class="media-body">
+              <h4 class="media-heading">Start Bootstrap
+                  <small>August 25, 2014 at 9:30 PM</small>
+              </h4>
+              Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+          </div>
+      </div>
+      </div>
+    </div>
 {% endblock %}

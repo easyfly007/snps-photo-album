@@ -1,30 +1,24 @@
 {% extends "photoapp/base.html" %}
+{% load thumbnail %}
+
 {% block title %}{{ post.title }}{% endblock %}
 {% block content %}
-<div class="activity_tab">
-  <div class="activity_tab_feed_region">
-    <div class="activity_feed infinite_scroll_container">
-      <div class="activity_group_item">
-        <div class="activity_group_item__user_region">
-          <div class="activity_group_item_header">
-            <a href="" class="activity_group_item__avatar">
-              <img src="" alt="">
-            </a>
-            <div class="activity_group_item__attribution">
-              <span class="activity_group_item__context">
-								<a href="" class="activity_group_item__creator">{{ post.author.username }}</a>
-              </span>
-              <span class="activity_group_item__timestamp">
-                {{ post.time }}
-							</span>
-            </div>
-          </div>
-        </div>
-        {% for photo in post.photos.all %}
-          <img src=/static/{{ photo.thumbnail }} alt="">
-        {% endfor %}
-      </div>
-    </div>
-  </div>
+<div class ='container-fluid'>
+    <a href="/gallery/{{post.author.username}}">{{ post.author.username }}</a>
+    &nbsp;|&nbsp;
+    {{ post.time }}
+    {% for tag in post.posttags.all %}
+    &nbsp;|&nbsp;
+    {{tag.title}}
+  {% endfor %}
+</div>
+<div class = 'container-fluid'>
+  {% for photo in post.photos.all %}
+  <a href="/post/{{post.id}}/photo/{{photo.id}}" data-toggle="lightbox" data-gallery="sigma-gallery" data-title="{{photo.title}}">
+  {% thumbnail photo.truesize "470" as im %}
+  <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" class = 'img-fluid sigmapad col-lg-4 col-md-6'>
+  {% endthumbnail %}
+  </a>
+  {% endfor %}
 </div>
 {% endblock %}
