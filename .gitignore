@@ -1,4 +1,6 @@
 *.pyc
 *.sqlite3
 cache/*
+photoalbum/cache/*
 photoalbum/*.sqlite3
+photoalbum/upload_pics/*

@@ -35,19 +35,6 @@
       <hr>
     </div>
     <div class="container-fluid">
-      <!-- Blog Comments -->
-      <!-- Comments Form -->
-      <div class="well">
-          <h4>Leave a Comment:</h4>
-          <form role="form">
-              <div class="form-group">
-                  <textarea class="form-control" rows="3"></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-      </div>
-      <div class="col-lg-8">
-      <hr>
       <!-- Posted Comments -->
       <!-- Comment -->
       <div class="media">
@@ -61,6 +48,18 @@
               Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
           </div>
       </div>
+      <div class="col-lg-8">
+      <hr>
+      <!-- Blog Comments -->
+      <!-- Comments Form -->
+      <form role="form"  action="" method="post">
+              <div class="form-group">
+                  <label for="comment">Leave a Comment:</label>
+                  <textarea class="form-control" id="comment" rows="3"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+      <hr>
       </div>
     </div>
 {% endblock %}

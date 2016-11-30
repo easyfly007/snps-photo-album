@@ -8,6 +8,8 @@
     <div class ='container-fluid'>
       <a href="/gallery/{{post.author.username}}">{{ post.author.username }}</a>
       &nbsp;|&nbsp;
+      {{ post }}
+      &nbsp;|&nbsp;
       {{ post.time }}
       {% for tag in post.posttags.all %}
       &nbsp;|&nbsp;
@@ -17,7 +19,7 @@
 
     <div class = 'container-fluid'>
       {% for photo in post.photos.all %}
-        <a href="{{photo.truesize.url}}" data-toggle="lightbox" data-gallery="sigma-gallery" data-title="{{photo.title}}">
+      <a href="/post/{{post.id}}/photo/{{photo.id}}" data-toggle="lightbox" data-gallery="sigma-gallery" data-title="{{photo.title}}">
         {% thumbnail photo.truesize "470" as im %}
           <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" class = 'img-fluid sigmapad col-lg-4 col-md-6'>
         {% endthumbnail %}
