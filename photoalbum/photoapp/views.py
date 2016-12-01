@@ -44,10 +44,15 @@ def post_edit(Request, postid):
 	return HttpResponse('user post  edit page')
 
 
+@login_required
 def photo(Request, postid, photoid):
-    cur_post = get_object_or_404(Post, pk=postid)
-    cur_photo = get_object_or_404(Photo, pk=photoid)
-    return render_to_response('photoapp/photo.html', {'post': cur_post, 'photo': cur_photo})
+    post = get_object_or_404(Post, pk=postid)
+    photo = get_object_or_404(Photo, pk=photoid)
+    content = Request.POST.get('comment_content', None)
+    if content:
+        newComment = PhotoComment(author = Request.user, time=datetime.now().replace(microsecond=0), photo=photo, content=content)
+        newComment.save()
+    return render_to_response('photoapp/photo.html', RequestContext(Request, locals()) )
 
 def photo_edit(Request, userid, postid, photoid):
 	return HttpResponse('user post photo edit page')

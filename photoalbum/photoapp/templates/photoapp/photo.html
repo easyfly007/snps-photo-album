@@ -13,10 +13,11 @@
 
       <hr>
 
-      <!-- Date/Time -->
+      <!-- Date/Time 
       <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
 
-      <hr>
+      <hr>-->
+
     </div>
     <div class ='container-fluid'>
       <!-- Preview Image -->
@@ -37,28 +38,39 @@
     <div class="container-fluid">
       <!-- Posted Comments -->
       <!-- Comment -->
-      <div class="media">
-          <a class="pull-left" href="#">
-              <img class="media-object" src="http://placehold.it/64x64" alt="">
-          </a>
+      {% for comment in photo.comments.all %}
+        <div class="media">
+            <!-- <a class="pull-left" href="#">
+                <img class="media-object" src="http://placehold.it/64x64" alt=""> -->
           <div class="media-body">
-              <h4 class="media-heading">Start Bootstrap
-                  <small>August 25, 2014 at 9:30 PM</small>
+              <h4 class="media-heading">{{comment.author}}
+                  <small>{{comment.time|date:"Y-m-d H:i" }}</small>
               </h4>
-              Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+              {{comment.content}}
           </div>
-      </div>
+        </div>
+      {% endfor %}
       <div class="col-lg-8">
       <hr>
       <!-- Blog Comments -->
       <!-- Comments Form -->
-      <form role="form"  action="" method="post">
+      {% if Request.user.is_authenticated %}
+        <form role="form"  action="" method="post">
+          {% csrf_token %}
               <div class="form-group">
                   <label for="comment">Leave a Comment:</label>
-                  <textarea class="form-control" id="comment" rows="3"></textarea>
+                  <textarea class="form-control" name="comment_content" rows="3"></textarea>
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
+        </form>
+      {% else %}
+        <a class="nav-link" href="/login"> Login </a>                        
+      {% endif %}
+      {% if comment %}
+      <div class="alert alert-success" role="alert">
+          <strong>Well done!</strong> {{comment}}
+</div>
+      {% endif %}
       <hr>
       </div>
     </div>

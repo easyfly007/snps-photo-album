@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import datetime
 
 # for user profile
 # class User(models.Model):
@@ -60,8 +61,8 @@ class Photo(models.Model):
 
 class Comment(models.Model):
 	author = models.ForeignKey(User)
-	time = models.DateTimeField
-	content = models.TextField
+	time = models.DateTimeField(default=datetime.now)
+	content = models.CharField(max_length=1024)
 
 
 class PostComment(Comment):
