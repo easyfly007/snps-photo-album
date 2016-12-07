@@ -26,7 +26,6 @@ def profile(Request, userid):
 def profile_edit(Request, userid):
 	return HttpResponse('user profile edit page')
 
-
 def user_new(Request, userid):
 	return HttpResponse('user new post page')
 def user_edit(Request, userid):
@@ -113,7 +112,7 @@ def profile(Request, username):
 def login_form(Request):
     return render_to_response(
         'photoapp/login.html',
-        RequestContext(Request,locals()))
+        RequestContext(Request, locals()))
 
 def logout_form(Request):
     logout(Request)
