@@ -86,11 +86,12 @@ def uploading(Request):
         post = Post(author = Request.user, title=newposttitle, time=datetime.now() )
         post.save()
         Request.session['last_postid'] = post.id
-
+    filename= f.name
+    phototitle  = filename.split('.')[-2]
     photo = Photo(
         truesize = f, 
         post = post, 
-        title = 'my image')
+        title = phototitle)
     photo.save()
     return HttpResponse(photo.truesize.url)
 
