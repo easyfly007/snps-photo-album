@@ -5,10 +5,12 @@
 {% block content %}
     <div class ='container-fluid'>
       <!-- Blog Post -->
-      <h1> {{ photo }} </h1>
+      <h2> {{ photo }} </h2>
       <!-- Title -->
       <p class="lead">
-      by {{ photo.post.author }}
+       <a href = "/gallery/{{ photo.post.author.username }}"> {{ photo.post.author.username }} </a>
+       &nbsp;|&nbsp;
+       <a href = "/post/{{ photo.post.id }}"> {{ photo.post.title }} </a>
       </p>
 
       <hr>
@@ -69,7 +71,7 @@
       {% if comment %}
       <div class="alert alert-success" role="alert">
           <strong>Well done!</strong> {{comment}}
-</div>
+      </div>
       {% endif %}
       <hr>
       </div>
