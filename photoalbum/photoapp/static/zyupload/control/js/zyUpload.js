@@ -59,7 +59,7 @@
 	            	html += '				<div class="convent_choice">';
 	            	html += '					<div class="andArea">';
 	            	html += '						<div class="filePicker">browse ... </div>';
-	            	html += '						<input id="fileImage" type="file" size="30" name="fileselect[]" '+multiple+'>';
+	            	html += '						<input id="fileImage" type="file" size="30" name="fileselect[]" '+multiple+' accept="image/jpeg, image/gif, image/x-png">';
 	            	html += '					</div>';
 	            	html += '				</div>';
 					html += '				<span id="fileDragArea" class="upload_drag_area">or drag your photo files here</span>';
