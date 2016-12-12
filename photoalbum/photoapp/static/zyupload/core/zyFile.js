@@ -159,10 +159,14 @@ var ZYFILE = {
 			// 遍历所有文件  ，在调用单个文件上传的方法
 			var newpostflag = 1;
 			var newposttitle = $('#newposttitle').val();
-			$.each(this.uploadFile, function(k, v){
-				self.funUploadFile(v, newpostflag, newposttitle);
-				newpostflag = 0;
-			});
+			if (newposttitle== ""){
+				alert('please input the post title!')
+			}else{
+				$.each(this.uploadFile, function(k, v){
+					self.funUploadFile(v, newpostflag, newposttitle);
+					newpostflag = 0;
+				});
+			}
 		},
 		// 上传单个个文件
 		funUploadFile : function(file, newpostflag, newposttitle){
