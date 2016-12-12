@@ -76,13 +76,14 @@ def uploading(Request):
         return HttpResponse('no image file uploaded')
     
     post = None
-    newpost = Request.POST.get('newpost', None)
-    if newpost and int(newpost) == 0:
+    newpostflag = Request.POST.get('newpostflag', None)
+    newposttitle = Request.POST.get('posttitle', "unknown")
+    if newpostflag and int(newpostflag) == 0:
         last_postid = Request.session.get('last_postid', None)
         if last_postid:
             post = Post.objects.get(pk = last_postid)
     if post is None:
-        post = Post(author = Request.user, title='', time=datetime.now() )
+        post = Post(author = Request.user, title=newposttitle, time=datetime.now() )
         post.save()
         Request.session['last_postid'] = post.id
 

@@ -157,19 +157,21 @@ var ZYFILE = {
 		funUploadFiles : function(){
 			var self = this;  // 在each中this指向没个v  所以先将this保留
 			// 遍历所有文件  ，在调用单个文件上传的方法
-			var newpost = 1;
+			var newpostflag = 1;
+			var newposttitle = $('#newposttitle').val();
 			$.each(this.uploadFile, function(k, v){
-				self.funUploadFile(v, newpost);
-				newpost = 0;
+				self.funUploadFile(v, newpostflag, newposttitle);
+				newpostflag = 0;
 			});
 		},
 		// 上传单个个文件
-		funUploadFile : function(file, newpost){
+		funUploadFile : function(file, newpostflag, newposttitle){
 			var self = this;  // 在each中this指向每个v  所以先将this保留
 			
 			var formdata = new FormData();
 			formdata.append("fileList", file);
-			formdata.append('newpost', newpost);
+			formdata.append('newpostflag', newpostflag);
+			formdata.append('posttitle', newposttitle);
 			// 需要考虑上传不同的 image 给同一个 album 的 post         		
 			var xhr = new XMLHttpRequest();
 			// 绑定上传事件

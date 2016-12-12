@@ -64,6 +64,9 @@
 	            	html += '				</div>';
 					html += '				<span id="fileDragArea" class="upload_drag_area">or drag your photo files here</span>';
 					html += '			</div>';
+					html += '           <div class = "post_name"> ';
+					html += '               <input type ="text" class = "post_name" id="newposttitle" name = "posttitle" placeholder="input your post title here">'
+					html += '           </div>';
 		            html += '			<div class="status_bar">';
 		            html += '				<div id="status_info" class="info">0 photo, 0B</div>';
 		            html += '				<div class="btns">';
