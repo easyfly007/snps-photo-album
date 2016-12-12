@@ -8,12 +8,11 @@
     <div class ='container-fluid'>
       <a href="/gallery/{{post.author.username}}">{{ post.author.username }}</a>
       &nbsp;|&nbsp;
-      {{ post }}
+      <a href="/post/{{post.id}}">{{ post.title }}</a>
       &nbsp;|&nbsp;
       {{ post.time }}
-      {% for tag in post.posttags.all %}
-      &nbsp;|&nbsp;
-      {{tag.title}}
+      {% for tag in post.tag.all %}
+        <span class="label label-default">{{ tag.title }}</span>
       {% endfor %}
     </div>
 
