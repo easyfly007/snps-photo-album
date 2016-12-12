@@ -167,6 +167,7 @@ var ZYFILE = {
 					newpostflag = 0;
 				});
 			}
+			$('#newposttitle').val('');
 		},
 		// 上传单个个文件
 		funUploadFile : function(file, newpostflag, newposttitle){
