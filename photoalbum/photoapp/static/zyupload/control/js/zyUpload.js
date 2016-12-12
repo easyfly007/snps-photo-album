@@ -150,7 +150,12 @@
 			this.funFilterEligibleFile = function(files){
 				var arrFiles = [];  // 替换的文件数组
 				for (var i = 0, file; file = files[i]; i++) {
-					if (file.size >= 51200000) {
+					var temp = file.name.split(".");
+					var suffix = temp[temp.length-1];
+					suffix = suffix.toUpperCase();
+					if (suffix != 'JPEG' && suffix != 'JPG' && suffix != 'GIF' && suffix != 'PNG'){
+						alert('please select an image file with suffix JPEG/JPG/GIF/PNG');
+					} else if (file.size >= 51200000) {
 						alert('"'+ file.name +'" file size too large');	
 					} else {
 						// 在这里需要判断当前所有文件中
