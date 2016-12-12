@@ -96,7 +96,7 @@
 		            html += '			</div>';
 		            html += '			<div id="preview" class="upload_preview">';
 				    html += '				<div class="add_upload">';
-				    html += '					<a style="height:'+para.itemHeight+';width:'+para.itemWidth+';" title="点击添加文件" id="rapidAddImg" class="add_imgBox" href="javascript:void(0)">';
+				    html += '					<a style="height:'+para.itemHeight+';width:'+para.itemWidth+';" title="click to add a" id="rapidAddImg" class="add_imgBox" href="javascript:void(0)">';
 				    html += '						<div class="uploadImg" style="width:'+imgWidth+'px">';
 				    html += '							<img class="upload_image" src="control/images/add_img.png" style="width:expression(this.width > '+imgWidth+' ? '+imgWidth+'px : this.width)" />';
 				    html += '						</div>';
@@ -105,7 +105,7 @@
 					html += '			</div>';
 					html += '		</div>';
 					html += '		<div class="upload_submit">';
-					html += '			<button type="button" id="fileSubmit" class="upload_submit_btn">确认上传文件</button>';
+					html += '			<button type="button" id="fileSubmit" class="upload_submit_btn">confirm</button>';
 					html += '		</div>';
 					html += '		<div id="uploadInf" class="upload_inf"></div>';
 					html += '	</div>';
@@ -338,7 +338,7 @@
 					onSuccess: function(file, response) {
 						$("#uploadProgress_" + file.index).hide();
 						$("#uploadSuccess_" + file.index).show();
-						$("#uploadInf").append("<p>success，photo uploaded to：" + response + "</p>");
+						$("#uploadInf").append("<p>success, photo uploaded to: " + response + "</p>");
 						// 根据配置参数确定隐不隐藏上传成功的文件
 						if(para.finishDel){
 							// 移除效果
