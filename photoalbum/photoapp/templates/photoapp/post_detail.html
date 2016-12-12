@@ -4,13 +4,13 @@
 {% block title %}{{ post.title }}{% endblock %}
 {% block content %}
 <div class ='container-fluid'>
+    <h2> {{ post.title }} </h2>
     <a href="/gallery/{{post.author.username}}">{{ post.author.username }}</a>
     &nbsp;|&nbsp;
     {{ post.time }}
-    {% for tag in post.posttags.all %}
-    &nbsp;|&nbsp;
-    {{tag.title}}
-  {% endfor %}
+    {% for tag in post.tag.all %}
+      <span class="label label-default">{{ tag.title }}</span>
+    {% endfor %}
 </div>
 <div class = 'container-fluid'>
   {% for photo in post.photos.all %}
