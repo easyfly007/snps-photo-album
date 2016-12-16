@@ -105,6 +105,15 @@ def gallery(Request, username):
         'photoapp/index.html',
         RequestContext(Request,locals()))
 
+# all the tag in the url will be lowercase and separated by under line
+# like /tag/spring_festival
+@login_required
+def tag(Request, tagname):
+    # to be done
+    msg = 'tag page for ' + tagname
+    return HttpResponse(msg)
+
+
 @login_required
 def profile(Request, username):
     return render_to_response(

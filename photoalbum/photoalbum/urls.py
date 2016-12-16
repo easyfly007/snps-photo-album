@@ -15,22 +15,12 @@ urlpatterns = [
     url(r'^$', app.index),
     url(r'^index$', app.index),
 
-    url(r'^user/(?P<userid>\w+)/new$',    app.user_new),
-    url(r'^user/(?P<userid>\w+)/edit$',   app.user_edit),
-
     url(r'^post/(?P<postid>\d+)$', app.post),
     url(r'^post/(?P<postid>\d+)/edit$', app.post_edit),
- 
 
-    url(r'^post/(?P<postid>\d+)/photo/(?P<photoid>\d+)$', app.photo),
-    url(r'^post/(?P<postid>\d+)/photo/(?P<photoid>\d+)/edit$', app.photo_edit),
+    url(r'^tag/(?P<tagname>\w+)$', app.tag),
 
-    # TODO 
-    # tag
-    # url(r'^post/(?P<postid>\d+)/photo/(?P<photoid>)\d+/edit$', 'photoapp.views.photo_edit'),    
-    # event 比赛评选 vote
-    # gallery 个人收藏
-    
+    # upload images    
     url(r'^upload$', app.upload),
     url(r'^uploading$', app.uploading),
 
