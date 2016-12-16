@@ -12,7 +12,9 @@
       &nbsp;|&nbsp;
       {{ post.time }}
       {% for tag in post.tag.all %}
-        <span class="label label-default">{{ tag.title }}</span>
+        <a href="/tag/{{tag.title}}">
+          <span class="label label-default">{{ tag.title }}</span>
+        </a>
       {% endfor %}
     </div>
 

@@ -110,9 +110,14 @@ def gallery(Request, username):
 @login_required
 def tag(Request, tagname):
     # to be done
-    msg = 'tag page for ' + tagname
-    return HttpResponse(msg)
-
+    unique_tagname = tagname.replace(' ', '_').lower()
+    tag = Tag.objects.get(title = unique_tagname)
+    post_list = None
+    if tag:
+        post_list = tag.posts.all().order_by('-time')
+    return render_to_response(
+        'photoapp/index.html',
+        RequestContext(Request, locals()))
 
 @login_required
 def profile(Request, username):
