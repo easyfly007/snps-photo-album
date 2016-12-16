@@ -10,6 +10,7 @@ import os
 from django.conf import settings
 from PIL import Image
 
+
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 
