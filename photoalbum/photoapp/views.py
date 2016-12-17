@@ -88,11 +88,20 @@ def uploading(Request):
             post = Post.objects.get(pk = last_postid)
     # create a new post
     if post is None:
-        taglist = newposttags.split(',')
-        taglist = map(unique_tagname, taglist)
         post = Post(author = Request.user, title=newposttitle, time=datetime.now() )
         post.save()
+        tagnames = newposttags.split(',')
+        tagnames = map(unique_tagname, tagnames)
+        for tagname in tagnames:
+            try:
+                tag = Tag.objects.get(title=tagname)
+            except Tag.DoesNotExist:
+                tag = Tag(title = tagname, author = Request.user)
+                tag.save()
+            post.tag.add(tag)
+        post.save()
         Request.session['last_postid'] = post.id
+    # creat new photo and add to the post
     filename= f.name
     phototitle  = filename.split('.')[-2]
     photo = Photo(

@@ -7,7 +7,7 @@ from datetime import datetime
 # other's post with same tag name should not be changed 
 class Tag(models.Model):
 	author = models.ForeignKey(User)
-	title = models.CharField(max_length = 10)
+	title = models.CharField(max_length = 80)
 	def __unicode__(self):
 		return self.title.replace('_', ' ')
 	def unique_name(self):

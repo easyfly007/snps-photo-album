@@ -76,7 +76,7 @@
 					html += '               <input type ="text" class = "post_name" id="newposttitle" name = "posttitle" placeholder="input your post title here">'
 					html += '           </div>';
 					html += '           <div>';
-					html += '               <span>tags(optional):</span>';
+					html += '               <label for = "tags"> <span>tags(optional):</span></label>';
 					html += '               <input type = "text" name = "tags" placeholder = "use \',\' to add more tags" >';
 					html += '           </div>';
 		            html += '			<div class="status_bar">';
