@@ -158,25 +158,37 @@ var ZYFILE = {
 			var self = this;  // 在each中this指向没个v  所以先将this保留
 			// 遍历所有文件  ，在调用单个文件上传的方法
 			var newpostflag = 1;
-			var newposttitle = $('#newposttitle').val();
+			var newposttags = null;
+			var posttype = $('input:radio[name="posttype"]:checked').val();
+			if (posttype == 'newpost'){
+				newpostflag = 1;
+				newposttitle = $('#newposttitle').val();
+				if (newposttitle== ""){
+					alert('please input the post title!')
+				}
+				newposttags = $('input:text[name="tags"]').val();
+			}else{
+				newpostflag = 0;
+			}
 			if (newposttitle== ""){
 				alert('please input the post title!')
 			}else{
 				$.each(this.uploadFile, function(k, v){
-					self.funUploadFile(v, newpostflag, newposttitle);
+					self.funUploadFile(v, newpostflag, newposttitle, newposttags);
 					newpostflag = 0;
 				});
 			}
 			$('#newposttitle').val('');
 		},
 		// 上传单个个文件
-		funUploadFile : function(file, newpostflag, newposttitle){
+		funUploadFile : function(file, newpostflag, newposttitle, newposttags){
 			var self = this;  // 在each中this指向每个v  所以先将this保留
 			
 			var formdata = new FormData();
 			formdata.append("fileList", file);
 			formdata.append('newpostflag', newpostflag);
 			formdata.append('posttitle', newposttitle);
+			formdata.append('posttags', newposttags);
 			// 需要考虑上传不同的 image 给同一个 album 的 post         		
 			var xhr = new XMLHttpRequest();
 			// 绑定上传事件

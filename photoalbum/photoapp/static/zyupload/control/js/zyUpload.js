@@ -64,10 +64,14 @@
 	            	html += '				</div>';
 					html += '				<span id="fileDragArea" class="upload_drag_area">or drag your photo files here</span>';
 					html += '			</div>';
-					html += '           <input type="radio" name="posttype" value="newpost" id="newpost" checked="checked" />';
-					html += '           <label for ="newpost"> new post </label>';
-                    html += '           <input type="radio" name="posttype" value="oldpost" id="oldpost" />';
-                    html += '           <label for ="oldpost"> continue post </label>';
+					html += '           <div>';
+					html += '               <input type="radio" name="posttype" value="newpost" id="newpost" checked="checked" />';
+					html += '               <label for ="newpost"> new post </label>';
+					html += '           </div>';
+					html += '           <div>';
+                    html += '               <input type="radio" name="posttype" value="oldpost" id="oldpost" />';
+                    html += '               <label for ="oldpost"> continue post </label>';
+                    html += '           </div>';
 					html += '           <div class = "newpost_name"> ';
 					html += '               <input type ="text" class = "post_name" id="newposttitle" name = "posttitle" placeholder="input your post title here">'
 					html += '           </div>';

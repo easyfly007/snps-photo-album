@@ -9,6 +9,7 @@ from django.template import RequestContext
 import os
 from django.conf import settings
 from PIL import Image
+import re
 
 
 from django.contrib.auth.decorators import login_required
@@ -79,11 +80,16 @@ def uploading(Request):
     post = None
     newpostflag = Request.POST.get('newpostflag', None)
     newposttitle = Request.POST.get('posttitle', "unknown")
+    newposttags = Request.POST.get('posttags', None)
+    #upload to an old post 
     if newpostflag and int(newpostflag) == 0:
         last_postid = Request.session.get('last_postid', None)
         if last_postid:
             post = Post.objects.get(pk = last_postid)
+    # create a new post
     if post is None:
+        taglist = newposttags.split(',')
+        taglist = map(unique_tagname, taglist)
         post = Post(author = Request.user, title=newposttitle, time=datetime.now() )
         post.save()
         Request.session['last_postid'] = post.id
@@ -110,8 +116,8 @@ def gallery(Request, username):
 @login_required
 def tag(Request, tagname):
     # to be done
-    unique_tagname = tagname.replace(' ', '_').lower()
-    tag = Tag.objects.get(title = unique_tagname)
+    tagname = unique_tagname(tagname)
+    tag = Tag.objects.get(title = tagname)
     post_list = None
     if tag:
         post_list = tag.posts.all().order_by('-time')
@@ -160,3 +166,11 @@ def register(Request):
         'photoapp/index.html',
         RequestContext(Request,locals()))
 
+
+# tool function to change the tag name to the unique tag name saved in the database
+def unique_tagname(tagname):
+    tagname = tagname.strip()
+    tagname = re.sub('( )+',' ', tagname)
+    tagname = re.sub(' ', '_', tagname)
+    tagname = tagname.lower()
+    return tagname
