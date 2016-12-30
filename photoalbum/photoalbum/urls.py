@@ -17,6 +17,9 @@ urlpatterns = [
 
     url(r'^post/(?P<postid>\d+)$', app.post),
     url(r'^post/(?P<postid>\d+)/edit$', app.post_edit),
+    
+    url(r'^post/(?P<postid>\d+)/photo/(?P<photoid>\d+)$', app.photo),
+    url(r'^post/(?P<postid>\d+)/photo/(?P<photoid>\d+)/edit$', app.photo_edit),
 
     url(r'^tag/(?P<tagname>\w+)$', app.tag),
 
