@@ -20,11 +20,17 @@
 
     <div class = 'container-fluid'>
       {% for photo in post.photos.all %}
-      <a href="/post/{{post.id}}/photo/{{photo.id}}" data-toggle="lightbox" data-gallery="sigma-gallery" data-title="{{photo.title}}">
-        {% thumbnail photo.truesize "470" as im %}
-          <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" class = 'img-fluid sigmapad col-lg-4 col-md-6'>
-        {% endthumbnail %}
-        </a>
+        <div class = ' col-lg-4 col-md-6'>
+          <div class = 'hovereffect'>
+            {% thumbnail photo.truesize "470" as im %}
+              <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" >
+              <div class="overlay">
+                 <h2>like it</h2>
+                    <a class='info img-fluid sigmapad' href="/post/{{post.id}}/photo/{{photo.id}}" data-toggle="lightbox" data-gallery="sigma-gallery" data-title="{{photo.title}}"> click here</a>
+              </div>
+            {% endthumbnail %}
+          </div>
+        </div>
       {% endfor %}
     </div>
     <br/>
