@@ -8,7 +8,7 @@ from datetime import datetime
 class Tag(models.Model):
 	author = models.ForeignKey(User)
 	title = models.CharField(max_length = 80)
-	def __unicode__(self):
+	def show_name(self):
 		return self.title.replace('_', ' ')
 	def unique_name(self):
 		return self.title
